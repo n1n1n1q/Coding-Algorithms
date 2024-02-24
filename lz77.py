@@ -57,6 +57,7 @@ class Lz77:
                     _match=curr_match
                     max_ind=i
         return _match, len(buffer)-max_ind
+
     def decode(self, data):
         """
         Decode a string using lz77
@@ -74,7 +75,7 @@ class Lz77:
                 msg+=msg[-el[0]:len(msg)-el[0]+el[1]]+el[2]
         return msg
 if __name__=='__main__':
-    lz=Lz77(3)
+    lz=Lz77(10000)
     msh=lz.encode("aababcabcabcabcabcabc")
     print(lz.decode(msh)=="aababcabcabcabcabcabc")
     print(lz.decode(msh))
@@ -89,3 +90,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit,
  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 """
     print(lz.decode(lz.encode(lorem_ipsum))==lorem_ipsum)
+    eneida=""""""
+    with open("Coding-Algorithms/eneida.txt",'r',encoding='utf-8') as f:
+        eneida=f.read()
+    encoded=lz.encode(eneida)
+    print(lz.decode(encoded)==eneida)
